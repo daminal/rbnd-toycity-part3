@@ -1,5 +1,6 @@
 class Product
-  attr_reader :title, :price, :stock
+  attr_reader :title, :price
+  attr_accessor :stock
 
   @@products = []
 
@@ -15,7 +16,7 @@ class Product
   end
 
   def self.in_stock
-    @@products.find_all{|product| product.stock > 0}
+    @@products.select{|product| product.in_stock?}
   end
 
   def self.all
