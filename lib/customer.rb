@@ -1,5 +1,5 @@
 class Customer
-	attr_accessor :name
+	attr_reader :name
 	@@customers = []
 
 	def initialize(options = {})
@@ -8,8 +8,11 @@ class Customer
 	end
 
 	def add_to_customers
-		#how do this error thing?
-		@@customers << self		
+		if @@customers.any?{|customer| customer.name == @name}
+			raise DuplicateCustomerError.new, "DuplicateCustomerError: \'#{@name}\' already exists."
+		else
+			@@customers << self
+		end		
 	end
 
 	def self.all
@@ -20,4 +23,10 @@ class Customer
 		@@customers.find{|customer| customer.name == name}
 	end
 
+	def purchase(name, product)
+		Transaction.new(name, product)
+	end
 end
+
+#options for finding out whether customers includes a particular name may include:
+##include?(object), #find(object)...

@@ -26,9 +26,13 @@ class Product
   private
 
   def add_to_products
-    #if the title of an item in products hash is equal to this title, then throw error.
-    @@products << self
+    if @@products.any?{|product| product.title == @title}
+      raise DuplicateProductError.new, "DuplicateProductError: \'#{@title}\' already exists."
+    else
+      @@products << self
+    end   
   end
+  
   def self.find_by_title(title_to_search)
     @@products.find{|product| product.title == title_to_search}
   end
