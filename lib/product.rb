@@ -26,13 +26,18 @@ class Product
   private
 
   def add_to_products
-    if @@products.any?{|product| product.title == @title}
-      raise DuplicateProductError.new, "DuplicateProductError: \'#{@title}\' already exists."
-    else
-      @@products << self
-    end   
+    begin
+      if @@products.any?{|product| product.title == @title}
+        raise DuplicateProductError.new
+      else
+        @@products << self
+      end
+    end
+    rescue
+      puts "DuplicateProductError: \'#{@title}\' already exists."
   end
   
+
   def self.find_by_title(title_to_search)
     @@products.find{|product| product.title == title_to_search}
   end

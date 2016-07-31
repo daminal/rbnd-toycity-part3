@@ -10,7 +10,6 @@ class Transaction
 	end
 
 	def add_to_transactions
-		#how do this error thing?
 		@@transactions << self	
 		@product.stock -= 1
 	end
