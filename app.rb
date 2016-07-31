@@ -71,4 +71,5 @@ walter.purchase(firehouse)
 # What features could be added? 
 # 0. Remove_transaction with error if there is no transaction to remove. 
 # 1. In case of error, prompt the user to allow the user to let the program finish. 
+# 2. Purchase more than 1 of an item. 
 

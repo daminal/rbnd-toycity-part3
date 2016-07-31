@@ -1,9 +1,10 @@
 class Customer
-	attr_reader :name
+	attr_reader :name, :purchases
 	@@customers = []
 
 	def initialize(options = {})
 		@name = options[:name]
+		@purchases = []
 		add_to_customers
 	end
 
@@ -28,15 +29,10 @@ class Customer
 	end
 
 	def purchase(product)
-		begin 
-			if product.in_stock?
-				Transaction.new(@name, product)
-			else
-				raise OutOfStockError.new
-			end
-		end
-		rescue 
-			puts "OutOfStockError: \'#{product.title}\' is out of stock."
+		#try to create new transaction: a purchase of a product by a customer.
+		Transaction.new(@name, product)
+		#if the transaction was added, add the purchase to the customer. 
+		#@purchases << product
 	end
 
 
