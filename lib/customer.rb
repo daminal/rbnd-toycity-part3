@@ -23,8 +23,8 @@ class Customer
 		@@customers.find{|customer| customer.name == name}
 	end
 
-	def purchase(name, product)
-		Transaction.new(name, product)
+	def purchase(product)
+		Transaction.new(@name, product)
 	end
 end
 
