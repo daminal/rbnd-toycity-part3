@@ -1,2 +1,2 @@
 git commit stuff
-app.rb: added call to #cancel_transaction() and #process_shipment. transaction.rb: added #cancel_transaction(id_num), adapted #initialize @id assignment to incongruity between the last id and the number of items in @@transactions when transactions have been removed. Added id_num parameter to #processed_shipment. customer.rb: added #cancel_transaction errors.rb: added ShipmentProcessedError.
+general: deleted extraneous files. reflections.rb: added. product.rb: made #cancel_transaction private. 

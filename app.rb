@@ -68,10 +68,3 @@ walter.purchase(firehouse)
 Transaction.print_purchases
 Transaction.process_shipment(2)
 walter.cancel_transaction(1)
-# Necessary edit?
-# 1. Move purchase product from customer.rb to product.rb. 
-
-# What features could be added? 
-# 0. Remove_transaction, raise error if there is no transaction to remove. 
-# 2. Purchase more than 1 of an item. 
-

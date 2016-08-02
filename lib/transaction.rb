@@ -14,19 +14,6 @@ class Transaction
 		add_to_transactions
 	end
 
-	def add_to_transactions
-		begin 
-			if @product.in_stock?
-				@@transactions << self	
-				@product.stock -= 1
-			else
-				raise OutOfStockError.new
-			end
-		end
-		rescue 
-			puts "OutOfStockError: \'#{product.title}\' is out of stock."
-	end
-
 	def self.process_shipment(id_num)
 		self.find(id_num).shipment_processed = true
 	end
@@ -57,4 +44,19 @@ class Transaction
 		rescue 
 			puts "ShipmentProcessedError: Order #{id_num} cannot be returned."
 	end	
+
+	private 
+	
+	def add_to_transactions
+		begin 
+			if @product.in_stock?
+				@@transactions << self	
+				@product.stock -= 1
+			else
+				raise OutOfStockError.new
+			end
+		end
+		rescue 
+			puts "OutOfStockError: \'#{product.title}\' is out of stock."
+	end
 end

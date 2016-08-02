@@ -1,0 +1,14 @@
+Reflections
+
+How long did you spend working on this project?
+I spent 20 hours working on this project. 
+
+What was the most rewarding challenge you conquered?
+The most rewarding challenge was finding enumerable documentation and using it to learn to access items in the @@transactions array. 
+
+What two additional features did you build? Why?
+1. Transaction.print_purchases prints data for all purchases so that the after-mentioned function may be used. 
+2. Transaction.cancel_transaction(id_num) cancels a purchase with the id of the parameter id_num so that an order that was entered by mistake may be undone, provided that it hasn’t already been processed by Toy City. 
+
+Where do you still have room to grow?
+I don’t understand public, private, and protected methods very well.
