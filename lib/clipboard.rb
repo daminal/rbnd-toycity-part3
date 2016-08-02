@@ -1,2 +1,2 @@
 git commit stuff
-general: deleted extraneous files. reflections.rb: added. product.rb: made #cancel_transaction private. 
+general: cleaned up, reorganized directory.
