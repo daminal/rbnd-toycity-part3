@@ -64,12 +64,11 @@ puts transaction2.product == nanoblock # Should return true
 
 walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
-
+Transaction.print_purchases
 # Necessary edit?
 # 1. Move purchase product from customer.rb to product.rb. 
 
 # What features could be added? 
-# 0. Remove_transaction with error if there is no transaction to remove. 
-# 1. In case of error, prompt the user to allow the user to let the program finish. 
+# 0. Remove_transaction, raise error if there is no transaction to remove. 
 # 2. Purchase more than 1 of an item. 
 

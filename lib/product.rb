@@ -35,7 +35,6 @@ class Product
     end
     rescue
       puts "DuplicateProductError: \'#{@title}\' already exists."
-
   end
   
 
