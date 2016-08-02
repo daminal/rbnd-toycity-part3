@@ -5,9 +5,13 @@ class Transaction
 	def initialize(customer, product)
 		@customer = customer
 		@product = product
-		@id = @@transactions.count.next
-		add_to_transactions
+		if @@transactions.count > 0
+			@id = @@transactions[-1].id.next
+		else
+			@id = 1
+		end
 		@shipment_processed = false
+		add_to_transactions
 	end
 
 	def add_to_transactions
@@ -23,8 +27,8 @@ class Transaction
 			puts "OutOfStockError: \'#{product.title}\' is out of stock."
 	end
 
-	def process_shipment
-		@shipment_processed = true
+	def self.process_shipment(id_num)
+		self.find(id_num).shipment_processed = true
 	end
  
 	def self.print_purchases
@@ -32,18 +36,25 @@ class Transaction
 		@@transactions.each do |p| 
 			puts "#{p.id}. Customer: #{p.customer.name}\tProduct: #{p.product.title} \tProcessed? #{p.shipment_processed}"
 		end
-
 	end	
 
 	def self.all
 		@@transactions
 	end
 
-	def self.find(id)
-		@@transactions[id-1]
+	def self.find(id_num)
+		@@transactions.find{|t| t.id == id_num}
 	end
 
+	def self.cancel_transaction(id_num)
+		transaction = Transaction.find(id_num)
+		unless transaction.shipment_processed
+			@@transactions = @@transactions.reject{|t| t == transaction}
+			puts "Order number #{id_num} has been canceled."
+		else 
+			raise ShipmentProcessedError.new
+		end
+		rescue 
+			puts "ShipmentProcessedError: Order #{id_num} cannot be returned."
+	end	
 end
-# How do I access the contents of customer?
-#Here, I need to access the product enumerable and diminish its instance variable 
-#@stock by 1. 

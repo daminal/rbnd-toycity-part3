@@ -20,7 +20,7 @@ class Product
   end
 
   def self.all
-    @@products  #call this from outside function: Products.all.
+    @@products
   end
 
   private
@@ -42,10 +42,3 @@ class Product
     @@products.find{|product| product.title == title_to_search}
   end
 end
-
-
-
-#It looks like there are 2 ways to do this. I could use map with eql?(other)
-#I think I should use each_pair.eql(). 
-#I want to go through each product. I check if :title = the input title. If it does,
-#I return the ID. 

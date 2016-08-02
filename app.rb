@@ -63,8 +63,11 @@ transaction2 = Transaction.find(2)
 puts transaction2.product == nanoblock # Should return true
 
 walter.purchase(firehouse)
+
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
 Transaction.print_purchases
+Transaction.process_shipment(2)
+walter.cancel_transaction(1)
 # Necessary edit?
 # 1. Move purchase product from customer.rb to product.rb. 
 

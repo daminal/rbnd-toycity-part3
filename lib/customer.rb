@@ -28,17 +28,10 @@ class Customer
 	end
 
 	def purchase(product)
-		#try to create new transaction: a purchase of a product by a customer.
 		Transaction.new(self, product)
-		#if there is a return value from Transaction.new, then push to the @purchases.
-		#if the transaction was added, add the purchase to the customer. 
-		#@purchases << product
+	end
+
+	def cancel_transaction(id_num)
+		Transaction.cancel_transaction(id_num)
 	end
 end
-
-# I want purchases to contain all the transaction IDs but don't know if I want to 
-# have a redundant data structure. Not really sure how to handle this! Maybe with the 
-# transaction id? 
-
-#options for finding out whether customers includes a particular name may include:
-##include?(object), #find(object)...
