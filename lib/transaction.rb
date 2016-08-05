@@ -39,10 +39,10 @@ class Transaction
 			@@transactions = @@transactions.reject{|t| t == transaction}
 			puts "Order number #{id_num} has been canceled."
 		else 
-			raise ShipmentProcessedError.new
+			raise ShipmentProcessedError.new, "Order #{id_num} cannot be returned."
 		end
-		rescue 
-			puts "ShipmentProcessedError: Order #{id_num} cannot be returned."
+		rescue StandardError => e
+  			puts "#{e.class}: #{e.message}"
 	end	
 
 	private 
@@ -53,10 +53,10 @@ class Transaction
 				@@transactions << self	
 				@product.stock -= 1
 			else
-				raise OutOfStockError.new
+				raise OutOfStockError.new, "'#{product.title} is out of stock."
 			end
 		end
-		rescue 
-			puts "OutOfStockError: \'#{product.title}\' is out of stock."
+		rescue StandardError => e
+			puts "#{e.class}: #{e.message}"
 	end
 end

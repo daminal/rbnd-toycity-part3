@@ -1,2 +1,2 @@
 git commit stuff
-general: cleaned up, reorganized directory.
+general: changed all .rb files to make rescue clauses functional.

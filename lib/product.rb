@@ -28,13 +28,13 @@ class Product
   def add_to_products
     begin
       if @@products.any?{|product| product.title == @title}
-        raise DuplicateProductError.new
+        raise DuplicateProductError.new, "'#{@title}' already exists."
       else
         @@products << self
       end
     end
-    rescue
-      puts "DuplicateProductError: \'#{@title}\' already exists."
+    rescue StandardError => e 
+      puts "#{e.class}: #{e.message}"
   end
   
 

@@ -7,5 +7,5 @@ end
 class OutOfStockError < StandardError
 end
 
-class ShipmentProcessedError
+class ShipmentProcessedError < StandardError
 end

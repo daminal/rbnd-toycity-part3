@@ -10,12 +10,12 @@ class Customer
 	def add_to_customers
 		begin					
 			if @@customers.any?{|customer| customer.name == @name}
-				raise DuplicateCustomerError.new
+				raise DuplicateCustomerError.new, "'#{@name}' already exists."
 			else
 				@@customers << self
 		end
-		rescue 
-			puts "DuplicateCustomerError: \'#{@name}\' already exists."
+		rescue StandardError => e
+			puts "#{e.class}: #{e.message}"
 		end		
 	end
 
